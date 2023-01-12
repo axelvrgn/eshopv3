@@ -6,7 +6,6 @@ import Logo from "./Logo";
 
 const listRoutes = Routes.map((route, index) => (
   <NavLink
-    exact
     to={route.path}
     className="uppercase hover:text-yellow-400 duration-150"
     key={index}
@@ -18,7 +17,7 @@ const listRoutes = Routes.map((route, index) => (
 const Navbar = () => {
   return (
     <div className="h-20 flex items-center">
-      <NavLink exact to="/">
+      <NavLink to="/">
         <Logo />
       </NavLink>
       <div className="flex space-x-8">{listRoutes}</div>
