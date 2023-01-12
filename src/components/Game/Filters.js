@@ -1,26 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-import axios from "axios";
+import { genreService } from "../../services/genreService";
+import { platformService } from "../../services/platformService";
 
 const Filters = () => {
   const [platforms, setPlatforms] = useState([]);
   const [genres, setGenres] = useState([]);
 
-  const plateformOptions = {
-    method: "GET",
-    url: "https://api.rawg.io/api/platforms?token&key=2f67919660e14d84ade60e3c149b38f9",
-    params: { page_size: 10 },
-  };
-
-  const genreOptions = {
-    method: "GET",
-    url: "https://api.rawg.io/api/genres?token&key=2f67919660e14d84ade60e3c149b38f9",
-    params: { page_size: 10 },
-  };
-
   useEffect(() => {
-    axios
-      .request(plateformOptions)
+    platformService
+      .getAll()
       .then((res) => {
         setPlatforms(res.data.results);
         console.log(res.data);
@@ -29,8 +18,8 @@ const Filters = () => {
         console.error(error);
       });
 
-    axios
-      .request(genreOptions)
+    genreService
+      .getAll()
       .then((res) => {
         setGenres(res.data.results);
         console.log(res.data);
