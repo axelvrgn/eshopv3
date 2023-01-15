@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Card = ({ game }) => {
   return (
     <Link to={`/games/${game.id}`}>
-      <div className="overflow-hidden drop-shadow-md bg-cover bg-center flex flex-col bg-white hover:bg-yellow-0 hover:scale-105 duration-300	">
+      <div className="overflow-hidden drop-shadow-md bg-cover bg-center flex flex-col bg-white relative hover:-translate-y-2 duration-200">
         <div
           className="h-80 bg-cover bg-top"
           style={{

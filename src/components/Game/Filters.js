@@ -43,6 +43,7 @@ const Filters = () => {
                 type="checkbox"
                 id={platform.name}
                 name={platform.name}
+                value={platform.name}
                 className="default:ring-2"
               />
               <label for={platform.name} className="text-yellow-500">
@@ -61,6 +62,7 @@ const Filters = () => {
                 type="checkbox"
                 id={genre.name}
                 name={genre.name}
+                value={genre.name}
                 className="default:ring-2"
               />
               <label for={genre.name} className="text-yellow-500">
