@@ -19,6 +19,15 @@ const VideoGames = () => {
   const [platform, setPlatform] = useState("");
   const [genre, setGenre] = useState("");
 
+  const genreChecked = (genre2) => {
+    if (genre == genre2) setGenre("");
+    else setGenre(genre2);
+  };
+
+  const platformChecked = (platform) => {
+    setPlatform(platform);
+  };
+
   useEffect(() => {
     gameService
       .getByPage(page, platform, genre)
@@ -57,9 +66,13 @@ const VideoGames = () => {
         <Container>
           <div className="flex justify-between">
             <div className="w-3/12">
-              <Filters />
+              <Filters
+                genreChecked={genreChecked}
+                platformChecked={platformChecked}
+              />
             </div>
             <div className="w-8/12">
+              <div>Genre: {genre}</div>
               <form className="flex flex-wrap space-x-2">
                 <FormField>
                   <FormControl

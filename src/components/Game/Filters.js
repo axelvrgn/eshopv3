@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { genreService } from "../../services/genreService";
 import { platformService } from "../../services/platformService";
 
-const Filters = () => {
+const Filters = ({ genreChecked, platformChecked }) => {
   const [platforms, setPlatforms] = useState([]);
   const [genres, setGenres] = useState([]);
 
@@ -44,6 +44,7 @@ const Filters = () => {
                 id={platform.name}
                 name={platform.name}
                 value={platform.name}
+                onChange={(e) => platformChecked(e.target.value)}
                 className="default:ring-2"
               />
               <label for={platform.name} className="text-yellow-500">
@@ -63,6 +64,7 @@ const Filters = () => {
                 id={genre.name}
                 name={genre.name}
                 value={genre.name}
+                onChange={(e) => genreChecked(e.target.value)}
                 className="default:ring-2"
               />
               <label for={genre.name} className="text-yellow-500">
