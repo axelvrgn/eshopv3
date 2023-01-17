@@ -10,7 +10,7 @@ const BurgerMenu = () => {
 
   return (
     <div>
-      <div class="lg:hidden flex items-center justify-between px-4">
+      <div className="lg:hidden flex items-center justify-between px-4">
         <button
           className="outline-none mobile-menu-button flex items-center z-20"
           onClick={() => setMenuActive(!isMenuActive)}
