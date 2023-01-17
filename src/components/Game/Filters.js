@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { genreService } from "../../services/genreService";
 import { platformService } from "../../services/platformService";
 
-const Filters = ({ genreChecked, platformChecked }) => {
+const Filters = ({ genreList, platformList }) => {
   const [platforms, setPlatforms] = useState([]);
   const [genres, setGenres] = useState([]);
 
@@ -30,11 +30,12 @@ const Filters = ({ genreChecked, platformChecked }) => {
   }, []);
 
   return (
-    <div className="bg-white flex flex-col p-4 space-y-4">
+    <div className="bg-white flex flex-col p-4 space-y-4 h-full">
       <div className="">
         <div className="font-bold text-lg">Filtrer</div>
       </div>
-      <div>
+
+      {/* <div>
         <div>Plateformes</div>
         <div className="flex flex-col space-y-1">
           {platforms.map((platform, index) => (
@@ -44,10 +45,9 @@ const Filters = ({ genreChecked, platformChecked }) => {
                 id={platform.name}
                 name={platform.name}
                 value={platform.name}
-                onChange={(e) => platformChecked(e.target.value)}
                 className="default:ring-2"
               />
-              <label for={platform.name} className="text-yellow-500">
+              <label htmlFor={platform.name} className="text-yellow-500">
                 {platform.name}
               </label>
             </div>
@@ -64,16 +64,15 @@ const Filters = ({ genreChecked, platformChecked }) => {
                 id={genre.name}
                 name={genre.name}
                 value={genre.name}
-                onChange={(e) => genreChecked(e.target.value)}
                 className="default:ring-2"
               />
-              <label for={genre.name} className="text-yellow-500">
+              <label htmlFor={genre.name} className="text-yellow-500">
                 {genre.name}
               </label>
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

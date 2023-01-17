@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Icon from "@mdi/react";
 import { mdiChevronRight, mdiChevronLeft, mdiMagnify } from "@mdi/js";
@@ -16,21 +16,12 @@ const VideoGames = () => {
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-  const [platform, setPlatform] = useState("");
-  const [genre, setGenre] = useState("");
-
-  const genreChecked = (genre2) => {
-    if (genre == genre2) setGenre("");
-    else setGenre(genre2);
-  };
-
-  const platformChecked = (platform) => {
-    setPlatform(platform);
-  };
+  const [platforms, setPlatforms] = useState("5");
+  const [genres, setGenres] = useState("5,1");
 
   useEffect(() => {
     gameService
-      .getByPage(page, platform, genre)
+      .getByPage(page, platforms, genres)
       .then((res) => {
         setGames(res.data.results);
         console.log(res.data.results);
@@ -38,11 +29,11 @@ const VideoGames = () => {
       .catch(function (error) {
         console.error(error);
       });
-  }, [page, platform, genre]);
+  }, [page, platforms, genres]);
 
   const searchGames = () => {
     gameService
-      .getBySearch(search)
+      .getBySearch(search, platforms, genres)
       .then((res) => {
         setGames(res.data.results);
         console.log(res.data.results);
@@ -66,13 +57,10 @@ const VideoGames = () => {
         <Container>
           <div className="flex justify-between">
             <div className="w-3/12">
-              <Filters
-                genreChecked={genreChecked}
-                platformChecked={platformChecked}
-              />
+              <Filters />
             </div>
             <div className="w-8/12">
-              <div>Genre: {genre}</div>
+              <div>Genre:</div>
               <form className="flex flex-wrap space-x-2">
                 <FormField>
                   <FormControl
