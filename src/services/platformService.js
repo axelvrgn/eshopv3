@@ -4,7 +4,7 @@ const getAll = () => {
   const options = {
     method: "GET",
     url: "https://api.rawg.io/api/platforms",
-    params: { key: "2f67919660e14d84ade60e3c149b38f9", page_size: 10 },
+    params: { key: "ee0a2d47b6b54dd3b649aaa653e174f3", page_size: 10 },
   };
   return axios.request(options);
 };

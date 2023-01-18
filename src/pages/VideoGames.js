@@ -16,8 +16,8 @@ const VideoGames = () => {
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-  const [platforms, setPlatforms] = useState("5");
-  const [genres, setGenres] = useState("5,1");
+  const [platforms, setPlatforms] = useState("4");
+  const [genres, setGenres] = useState("4");
 
   useEffect(() => {
     gameService
@@ -51,16 +51,36 @@ const VideoGames = () => {
     if (page > 1) setPage(page - 1);
   };
 
+  const handleGenre = (genre) => {
+    let splitedGenres = genres.split(",");
+    if (splitedGenres.includes(genre)) {
+      splitedGenres.splice(splitedGenres.indexOf(genre), 1);
+    } else splitedGenres.push(genre);
+
+    setGenres(splitedGenres.join());
+  };
+
+  const handlePlatform = (platform) => {
+    let splitedPlatforms = platforms.split(",");
+    if (splitedPlatforms.includes(platform)) {
+      splitedPlatforms.splice(splitedPlatforms.indexOf(platform), 1);
+    } else splitedPlatforms.push(platform);
+
+    setPlatforms(splitedPlatforms.join());
+  };
+
   return (
     <div>
       <Layout>
         <Container>
           <div className="flex justify-between">
             <div className="w-3/12">
-              <Filters />
+              <Filters
+                handleGenre={handleGenre}
+                handlePlatform={handlePlatform}
+              />
             </div>
             <div className="w-8/12">
-              <div>Genre:</div>
               <form className="flex flex-wrap space-x-2">
                 <FormField>
                   <FormControl

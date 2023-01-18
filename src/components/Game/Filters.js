@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { genreService } from "../../services/genreService";
 import { platformService } from "../../services/platformService";
 
-const Filters = ({ genreList, platformList }) => {
+const Filters = ({ handleGenre, handlePlatform }) => {
   const [platforms, setPlatforms] = useState([]);
   const [genres, setGenres] = useState([]);
 
@@ -35,7 +35,7 @@ const Filters = ({ genreList, platformList }) => {
         <div className="font-bold text-lg">Filtrer</div>
       </div>
 
-      {/* <div>
+      <div>
         <div>Plateformes</div>
         <div className="flex flex-col space-y-1">
           {platforms.map((platform, index) => (
@@ -44,7 +44,8 @@ const Filters = ({ genreList, platformList }) => {
                 type="checkbox"
                 id={platform.name}
                 name={platform.name}
-                value={platform.name}
+                value={platform.id}
+                onChange={(e) => handlePlatform(e.target.value)}
                 className="default:ring-2"
               />
               <label htmlFor={platform.name} className="text-yellow-500">
@@ -63,7 +64,8 @@ const Filters = ({ genreList, platformList }) => {
                 type="checkbox"
                 id={genre.name}
                 name={genre.name}
-                value={genre.name}
+                value={genre.id}
+                onChange={(e) => handleGenre(e.target.value)}
                 className="default:ring-2"
               />
               <label htmlFor={genre.name} className="text-yellow-500">
@@ -72,7 +74,7 @@ const Filters = ({ genreList, platformList }) => {
             </div>
           ))}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
