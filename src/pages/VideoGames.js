@@ -15,13 +15,14 @@ import { gameService } from "../services/gameService";
 const VideoGames = () => {
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(12);
   const [search, setSearch] = useState("");
-  const [platforms, setPlatforms] = useState("4");
-  const [genres, setGenres] = useState("4");
+  const [platforms, setPlatforms] = useState("");
+  const [genres, setGenres] = useState("");
 
   useEffect(() => {
     gameService
-      .getByPage(page, platforms, genres)
+      .getByPage(page, pageSize)
       .then((res) => {
         setGames(res.data.results);
         console.log(res.data.results);
@@ -29,7 +30,7 @@ const VideoGames = () => {
       .catch(function (error) {
         console.error(error);
       });
-  }, [page, platforms, genres]);
+  }, [page, pageSize]);
 
   const searchGames = () => {
     gameService
@@ -56,7 +57,6 @@ const VideoGames = () => {
     if (splitedGenres.includes(genre)) {
       splitedGenres.splice(splitedGenres.indexOf(genre), 1);
     } else splitedGenres.push(genre);
-
     setGenres(splitedGenres.join());
   };
 

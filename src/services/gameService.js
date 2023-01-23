@@ -9,16 +9,15 @@ const getAll = () => {
   return axios.request(options);
 };
 
-const getByPage = (page, platforms, genres) => {
+const getByPage = (page, pageSize) => {
   const options = {
     method: "GET",
     url: "https://api.rawg.io/api/games",
     params: {
       key: "ee0a2d47b6b54dd3b649aaa653e174f3",
       page: page,
-      page_size: 12,
-      platforms: platforms,
-      genres: genres,
+      page_size: pageSize,
+      ordering: "rating",
     },
   };
   return axios.request(options);
@@ -32,7 +31,6 @@ const getBySearch = (search, platforms, genres) => {
       key: "ee0a2d47b6b54dd3b649aaa653e174f3",
       page_size: 21,
       search: search,
-      search_exact: true,
       platforms: platforms,
       genres: genres,
       ordered: "name",
