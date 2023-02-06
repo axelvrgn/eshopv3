@@ -36,7 +36,7 @@ const guestRoutes = GuestRoutes.map((route, index) => (
     }
     key={index}
   >
-    <div className="flex items-center text-white bg-yellow-400 px-3 py-2 rounded-full hover:text-yellow-500 duration-150">
+    <div className="flex items-center text-white bg-yellow-400 border border-yellow-400 px-3 py-2 rounded-full hover:bg-white hover:text-yellow-400 duration-150">
       {route.label}
     </div>
   </NavLink>
