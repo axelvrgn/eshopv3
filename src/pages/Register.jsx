@@ -9,8 +9,10 @@ const Register = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await supabase.auth.signInWithPassword(email, password);
-      console.log("auth ok");
+      await supabase.auth.signUp({ email }, { password });
+      alert("Check your mails");
+      //await supabase.auth.signInWithPassword(email, password);
+      console.log("check email");
     } catch (error) {
       setError(error.message);
     }

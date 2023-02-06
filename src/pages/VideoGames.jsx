@@ -9,6 +9,7 @@ import Games from "../components/Game/Games";
 import Filters from "../components/Game/Filters";
 import FormControl from "../components/FormControl";
 import FormField from "../components/FormField";
+import Loader from "../components/Loader";
 
 import { gameService } from "../services/gameService";
 
@@ -19,12 +20,14 @@ const VideoGames = () => {
   const [search, setSearch] = useState("");
   const [platforms, setPlatforms] = useState("");
   const [genres, setGenres] = useState("");
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     gameService
       .getByPage(page, pageSize)
       .then((res) => {
         setGames(res.data.results);
+        setLoading(false);
         console.log(res.data.results);
       })
       .catch(function (error) {
@@ -33,10 +36,13 @@ const VideoGames = () => {
   }, [page, pageSize]);
 
   const searchGames = () => {
+    console.log("search field : " + search);
+    setLoading(true);
     gameService
-      .getBySearch(search, platforms, genres)
+      .getBySearch(search)
       .then((res) => {
         setGames(res.data.results);
+        setLoading(false);
         console.log(res.data.results);
       })
       .catch(function (error) {
@@ -65,7 +71,6 @@ const VideoGames = () => {
     if (splitedPlatforms.includes(platform)) {
       splitedPlatforms.splice(splitedPlatforms.indexOf(platform), 1);
     } else splitedPlatforms.push(platform);
-
     setPlatforms(splitedPlatforms.join());
   };
 
@@ -98,12 +103,13 @@ const VideoGames = () => {
                   <Icon path={mdiMagnify} size={1} />
                 </button>
               </form>
-              <Games gamesList={games} />
+              {isLoading ? <Loader /> : <Games gamesList={games} />}
+
               <div className="flex justify-between py-8">
                 <button
                   onClick={handlePreviousPage}
                   disabled={page < 2}
-                  className="flex"
+                  className={` flex ${page < 2 ? "cursor-not-allowed" : ""} `}
                 >
                   <Icon path={mdiChevronLeft} size={1} />
                   Page précédente

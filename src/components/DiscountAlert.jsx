@@ -1,6 +1,6 @@
 import React from "react";
 
-const Alert = () => {
+const DiscountAlert = () => {
   return (
     <div className="min-h-8 py-1 flex justify-center items-center bg-yellow-400">
       <div className="uppercase text-white font-semibold">
@@ -11,4 +11,4 @@ const Alert = () => {
   );
 };
 
-export default Alert;
+export default DiscountAlert;

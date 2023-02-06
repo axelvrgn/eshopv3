@@ -2,7 +2,7 @@ import React from "react";
 
 import Warning from "../components/Warning";
 import Navbar from "../components/Navigation/Navbar";
-import Alert from "../components/Alert";
+import DiscountAlert from "../components/DiscountAlert";
 import Footer from "../components/Footer";
 
 const Layout = ({ children }) => {
@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
     <div className="flex flex-col bg-slate-100 h-min-screen relative">
       <Warning />
       <Navbar />
-      <Alert />
+      <DiscountAlert />
       <main>{children}</main>
       <Footer />
     </div>
