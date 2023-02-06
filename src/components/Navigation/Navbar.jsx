@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { NavLink } from "react-router-dom";
 import Routes from "./Routes";
+import GuestRoutes from "./GuestRoutes";
 import Logo from "./Logo";
 import BurgerMenu from "./BurgerMenu";
 
@@ -25,6 +26,22 @@ const listRoutes = Routes.map((route, index) => (
   </NavLink>
 ));
 
+const guestRoutes = GuestRoutes.map((route, index) => (
+  <NavLink
+    to={route.path}
+    className={({ isActive }) =>
+      isActive
+        ? "border-b-4 border-yellow-400"
+        : "border-b-4 border-transparent"
+    }
+    key={index}
+  >
+    <div className="flex items-center text-white bg-yellow-400 px-3 py-2 rounded-full hover:text-yellow-500 duration-150">
+      {route.label}
+    </div>
+  </NavLink>
+));
+
 const Navbar = () => {
   const [search, setSearch] = useState("");
 
@@ -40,9 +57,10 @@ const Navbar = () => {
       <BurgerMenu />
       <div className="lg:block w-full max-lg:hidden">
         <div className="flex items-center justify-between">
-          <div className="flex items-center ">
+          <div className="flex items-center justify-between ">
             <div className="flex space-x-8 flex-wrap">{listRoutes}</div>
           </div>
+          <div className="px-4">{guestRoutes}</div>
           {/* <div>
         <form className="flex items-center space-x-2">
           <FormField label="">
@@ -62,9 +80,6 @@ const Navbar = () => {
           </button>
         </form>
       </div> */}
-          <div>
-            <button className="px-4">Connexion</button>
-          </div>
         </div>
       </div>
     </div>
