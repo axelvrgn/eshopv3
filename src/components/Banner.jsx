@@ -2,6 +2,9 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import Icon from "@mdi/react";
+import { mdiArrowRight } from "@mdi/js";
+
 const Banner = () => {
   const navigate = useNavigate();
   return (
@@ -11,35 +14,14 @@ const Banner = () => {
         <div className="text-lg">Achetez, téléchargez et jouez !</div>
         <button
           type="button"
-          className="relative inline-flex items-center px-10 py-2 overflow-hidden text-lg font-medium text-yellow-400 border-2 border-yellow-400 hover:text-white group hover:bg-white-400"
           onClick={() => navigate("/games")}
+          className="relative inline-flex items-center px-10 py-2 text-xl border-2 border-yellow-400 text-yellow-400 hover:text-white group hover:shadow-[inset_17rem_0_0_0] overflow-hidden hover:shadow-yellow-400 duration-[400ms,700ms] transition-[color,box-shadow]"
         >
-          <span className="absolute left-0 block w-full h-0 transition-all bg-yellow-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
           <span className="absolute right-0 flex items-center justify-start w-8 h8 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              ></path>
-            </svg>
+            <Icon path={mdiArrowRight} size={1} />
           </span>
           <span class="relative">Découvrir nos jeux</span>
         </button>
-        {/* <button
-          type="button"
-          className="bg-yellow-400 px-4 py-2 rounded-full text-white"
-          onClick={() => navigate("/games")}
-        >
-          Découvrir nos jeux
-        </button> */}
       </div>
     </div>
   );
