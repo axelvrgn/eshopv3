@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+
+//import { supabase } from "../supabaseClient";
 
 import Container from "../components/Container";
 import Layout from "../Layout/Layout";
@@ -19,7 +20,7 @@ const Login = () => {
     e.preventDefault();
 
     console.log(email, password);
-
+    /*
     try {
       setLoading(true);
       const { error } = await supabase.auth.signInWithPassword(
@@ -33,6 +34,7 @@ const Login = () => {
     } finally {
       setLoading(false);
     }
+    */
   };
 
   return (
