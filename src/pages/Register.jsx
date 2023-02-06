@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { supabase } from "../supabaseClient";
+//import { supabase } from "../supabaseClient";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -8,6 +8,7 @@ const Register = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    /*
     try {
       await supabase.auth.signUp({ email }, { password });
       alert("Check your mails");
@@ -16,6 +17,7 @@ const Register = () => {
     } catch (error) {
       setError(error.message);
     }
+    */
   };
 
   return (
