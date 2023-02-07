@@ -108,7 +108,13 @@ const VideoGames = () => {
                   <Icon path={mdiMagnify} size={1} />
                 </button>
               </form>
-              {isLoading ? <Loader /> : <Games gamesList={games} />}
+              {isLoading ? (
+                <div className="flex justify-center scale-150 h-[70vh]">
+                  <Loader label="Chargement..." />
+                </div>
+              ) : (
+                <Games gamesList={games} />
+              )}
 
               <div className="flex justify-between py-8">
                 <button

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import { supabase } from "../supabaseClient";
+import { supabase } from "../supabaseClient";
 
 import { useNavigate } from "react-router-dom";
 
@@ -9,8 +9,10 @@ import FormField from "../components/FormField";
 import FormControl from "../components/FormControl";
 import Logo from "../components/Logo";
 import Alert from "../components/Alert";
+import Loader from "../components/Loader";
 
 const Register = () => {
+  const [isLoading, setLoading] = useState(false);
   const [pseudo, setPseudo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,16 +23,21 @@ const Register = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    /*
-    try {
-      await supabase.auth.signUp({ email }, { password });
-      alert("Check your mails");
-      //await supabase.auth.signInWithPassword(email, password);
-      console.log("check email");
-    } catch (error) {
-      setError(error.message);
-    }
-    */
+    if (password === passwordVerif) {
+      try {
+        setLoading(true);
+        const { error } = await supabase.auth.signUp({
+          email: email,
+          password: password,
+        });
+        if (error) throw error;
+        alert("Un mail de confirmation a été envoyé sur votre boîte mail");
+      } catch (error) {
+        alert(error.error_description || error.message);
+      } finally {
+        setLoading(false);
+      }
+    } else alert("Les mots de passe ne sont pas identique");
   };
 
   return (
@@ -55,19 +62,21 @@ const Register = () => {
                 </button>
               </div>
 
-              <FormField htmlFor="pseudo" label="Pseudo">
+              {/* <FormField htmlFor="pseudo" label="Pseudo">
                 <FormControl
                   type="text"
                   value={pseudo}
                   onChange={(e) => setPseudo(e.target.value)}
+                  required
                 />
-              </FormField>
+              </FormField> */}
               <FormField htmlFor="email" label="Adresse e-mail">
                 <FormControl
                   type="email"
                   placeholder="john.doe@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </FormField>
               <FormField htmlFor="password" label="Mot de passe">
@@ -75,6 +84,7 @@ const Register = () => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </FormField>
               <FormField
@@ -82,13 +92,20 @@ const Register = () => {
                 label="Vérification du mot de passe"
               >
                 <FormControl
-                  type="passwordverif"
+                  type="password"
                   value={passwordVerif}
                   onChange={(e) => setPasswordVerif(e.target.value)}
+                  required
                 />
               </FormField>
               <button className="bg-yellow-400 p-2 text-white" type="submit">
-                S'inscrire
+                {isLoading ? (
+                  <div className="flex justify-center">
+                    <Loader />
+                  </div>
+                ) : (
+                  <div>S'inscrire</div>
+                )}
               </button>
               {error && <p style={{ color: "red" }}>{error}</p>}
             </div>

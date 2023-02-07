@@ -7,6 +7,7 @@ const FormControl = ({
   onChange,
   minLength,
   maxLength,
+  required,
 }) => {
   return (
     <div>
@@ -19,6 +20,7 @@ const FormControl = ({
         onChange={onChange}
         minlength={minLength}
         maxlength={maxLength}
+        required={required}
       />
     </div>
   );

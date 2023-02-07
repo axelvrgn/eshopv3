@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-//import { supabase } from "../supabaseClient";
+import { supabase } from "../supabaseClient";
 
 import Container from "../components/Container";
 import Layout from "../layouts/Layout";
@@ -9,9 +9,10 @@ import FormField from "../components/FormField";
 import FormControl from "../components/FormControl";
 import Logo from "../components/Logo";
 import Alert from "../components/Alert";
+import Loader from "../components/Loader";
 
 const Login = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,22 +21,19 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    console.log(email, password);
-    /*
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signInWithPassword(
-        { email },
-        { password }
-      );
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
       if (error) throw error;
-      alert("Check your email for the login link!");
+      console.log(data);
     } catch (error) {
       alert(error.error_description || error.message);
     } finally {
       setLoading(false);
     }
-    */
   };
 
   return (
@@ -66,6 +64,7 @@ const Login = () => {
                     placeholder="john.doe@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </FormField>
                 <FormField htmlFor="password" label="Mot de passe">
@@ -73,15 +72,21 @@ const Login = () => {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    minLength="8"
+                    required
                   />
                 </FormField>
                 <button
-                  className="bg-yellow-400 text-white p-2"
+                  className="bg-yellow-400 text-white p-2 text-center"
                   aria-live="polite"
                   type="submit"
                 >
-                  Connexion
+                  {isLoading ? (
+                    <div className="flex justify-center">
+                      <Loader />
+                    </div>
+                  ) : (
+                    <div>Connexion</div>
+                  )}
                 </button>
               </div>
             </form>

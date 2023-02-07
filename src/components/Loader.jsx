@@ -1,11 +1,11 @@
 import React from "react";
 
-const Loader = () => {
+const Loader = ({ label }) => {
   return (
-    <div className="flex flex-col justify-center items-center h-[70vh] space-y-4">
+    <div className="flex items-center">
       <svg
         role="status"
-        className="h-16 w-16 animate-spin mr-2 text-gray-200 fill-yellow-400 "
+        className="h-8 w-8 animate-spin mr-2 text-gray-200 fill-yellow-400 "
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@ const Loader = () => {
           fill="currentFill"
         />
       </svg>
-      <div>Chargement...</div>
+      {label !== "" ? <div>{label}</div> : <div></div>}
     </div>
   );
 };
