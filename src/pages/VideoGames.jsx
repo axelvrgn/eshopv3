@@ -20,9 +20,10 @@ const VideoGames = () => {
   const [search, setSearch] = useState("");
   const [platforms, setPlatforms] = useState("");
   const [genres, setGenres] = useState("");
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     gameService
       .getByPage(page, pageSize, genres, platforms)
       .then((res) => {
