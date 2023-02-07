@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Icon from "@mdi/react";
 import { mdiChevronRight, mdiChevronLeft, mdiMagnify } from "@mdi/js";
 
-import Layout from "../Layout/Layout";
+import Layout from "../layout/Layout";
 import Container from "../components/Container";
 import Games from "../components/Game/Games";
 import Filters from "../components/Game/Filters";
@@ -24,7 +24,7 @@ const VideoGames = () => {
 
   useEffect(() => {
     gameService
-      .getByPage(page, pageSize)
+      .getByPage(page, pageSize, genres, platforms)
       .then((res) => {
         setGames(res.data.results);
         setLoading(false);
@@ -33,7 +33,7 @@ const VideoGames = () => {
       .catch(function (error) {
         console.error(error);
       });
-  }, [page, pageSize]);
+  }, [page, pageSize, genres, platforms]);
 
   const searchGames = () => {
     console.log("search field : " + search);
@@ -59,19 +59,23 @@ const VideoGames = () => {
   };
 
   const handleGenre = (genre) => {
-    let splitedGenres = genres.split(",");
-    if (splitedGenres.includes(genre)) {
-      splitedGenres.splice(splitedGenres.indexOf(genre), 1);
-    } else splitedGenres.push(genre);
-    setGenres(splitedGenres.join());
+    if (genres !== "") {
+      let splitedGenres = genres.split(",");
+      if (splitedGenres.includes(genre)) {
+        splitedGenres.splice(splitedGenres.indexOf(genre), 1);
+      } else splitedGenres.push(genre);
+      setGenres(splitedGenres.join());
+    } else setGenres(genre);
   };
 
   const handlePlatform = (platform) => {
-    let splitedPlatforms = platforms.split(",");
-    if (splitedPlatforms.includes(platform)) {
-      splitedPlatforms.splice(splitedPlatforms.indexOf(platform), 1);
-    } else splitedPlatforms.push(platform);
-    setPlatforms(splitedPlatforms.join());
+    if (platforms !== "") {
+      let splitedPlatforms = platforms.split(",");
+      if (splitedPlatforms.includes(platform)) {
+        splitedPlatforms.splice(splitedPlatforms.indexOf(platform), 1);
+      } else splitedPlatforms.push(platform);
+      setPlatforms(splitedPlatforms.join());
+    } else setPlatforms(platform);
   };
 
   return (
@@ -109,12 +113,17 @@ const VideoGames = () => {
                 <button
                   onClick={handlePreviousPage}
                   disabled={page < 2}
-                  className={` flex ${page < 2 ? "cursor-not-allowed" : ""} `}
+                  className={` flex ${
+                    page < 2 ? "cursor-not-allowed" : ""
+                  } hover:text-yellow-400`}
                 >
                   <Icon path={mdiChevronLeft} size={1} />
                   Page précédente
                 </button>
-                <button onClick={handleNextPage} className="flex">
+                <button
+                  onClick={handleNextPage}
+                  className="flex hover:text-yellow-400"
+                >
                   Page suivante
                   <Icon path={mdiChevronRight} size={1} />
                 </button>
