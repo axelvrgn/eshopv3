@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 //import { supabase } from "../supabaseClient";
 
 import Container from "../components/Container";
-import Layout from "../layout/Layout";
+import Layout from "../layouts/Layout";
 import FormField from "../components/FormField";
 import FormControl from "../components/FormControl";
 import Logo from "../components/Logo";

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Icon from "@mdi/react";
 import { mdiChevronRight, mdiChevronLeft, mdiMagnify } from "@mdi/js";
 
-import Layout from "../layout/Layout";
+import Layout from "../layouts/Layout";
 import Container from "../components/Container";
 import Games from "../components/Game/Games";
 import Filters from "../components/Game/Filters";
