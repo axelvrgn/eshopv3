@@ -29,6 +29,10 @@ const Register = () => {
         const { error } = await supabase.auth.signUp({
           email: email,
           password: password,
+          options: {
+            emailRedirectTo:
+              "https://exquisite-cactus-679f5e.netlify.app/login",
+          },
         });
         if (error) throw error;
         alert("Un mail de confirmation a été envoyé sur votre boîte mail");
