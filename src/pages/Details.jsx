@@ -7,7 +7,7 @@ import Moment from "react-moment";
 
 import { useParams } from "react-router-dom";
 
-import Layout from "../Layout/Layout";
+import Layout from "../layout/Layout";
 import Container from "../components/Container";
 import Section from "../components/Section";
 import { gameService } from "../services/gameService";

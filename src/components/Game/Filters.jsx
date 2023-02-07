@@ -36,7 +36,7 @@ const Filters = ({ handleGenre, handlePlatform }) => {
       <div className="">
         <div className="font-bold text-lg">Filtrer</div>
       </div>
-      <Alert title="Filtrage en cours de dev" />
+
       <div>
         <div>Plateformes</div>
         <div className="flex flex-col space-y-1">

@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 //import { supabase } from "../supabaseClient";
 
 import Container from "../components/Container";
-import Layout from "../Layout/Layout";
+import Layout from "../layout/Layout";
 import FormField from "../components/FormField";
 import FormControl from "../components/FormControl";
 import Logo from "../components/Logo";
+import Alert from "../components/Alert";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -41,12 +42,14 @@ const Login = () => {
     <div>
       <Layout>
         <Container>
-          <div className="flex justify-center h-[70vh] items-center">
+          <div className="flex justify-center">
             <form onSubmit={handleLogin} className="bg-white border p-16 ">
               <div className="flex flex-col space-y-8 w-[50ch]">
+                <Alert title="Connexion en cours de dev" />
                 <div className="h-48">
                   <Logo />
                 </div>
+
                 <div className="uppercase flex font-semibold text-lg flex-wrap items-center justify-between">
                   <div>Connexion</div>
                   <button

@@ -9,7 +9,7 @@ const getAll = () => {
   return axios.request(options);
 };
 
-const getByPage = (page, pageSize) => {
+const getByPage = (page, pageSize, genres, platforms) => {
   const options = {
     method: "GET",
     url: "https://api.rawg.io/api/games",
@@ -17,9 +17,34 @@ const getByPage = (page, pageSize) => {
       key: "ee0a2d47b6b54dd3b649aaa653e174f3",
       page: page,
       page_size: pageSize,
-      //ordering: "rating",
     },
   };
+
+  if (genres !== "") {
+    options.params = {
+      key: "ee0a2d47b6b54dd3b649aaa653e174f3",
+      page: page,
+      page_size: pageSize,
+      genres: genres,
+    };
+  }
+  if (platforms !== "") {
+    options.params = {
+      key: "ee0a2d47b6b54dd3b649aaa653e174f3",
+      page: page,
+      page_size: pageSize,
+      platforms: platforms,
+    };
+  }
+  if (genres !== "" && platforms !== "") {
+    options.params = {
+      key: "ee0a2d47b6b54dd3b649aaa653e174f3",
+      page: page,
+      page_size: pageSize,
+      genres: genres,
+      platforms: platforms,
+    };
+  }
   return axios.request(options);
 };
 
