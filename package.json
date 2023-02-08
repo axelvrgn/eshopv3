@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fontsource/poppins": "^4.5.10",
+    "@headlessui/react": "^1.7.10",
     "@mdi/js": "^7.1.96",
     "@mdi/react": "^1.6.1",
     "@supabase/supabase-js": "^2.7.1",

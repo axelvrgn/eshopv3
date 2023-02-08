@@ -43,7 +43,7 @@ const Login = () => {
           <div className="flex justify-center">
             <form onSubmit={handleLogin} className="bg-white border p-16 ">
               <div className="flex flex-col space-y-8 w-[50ch]">
-                <Alert title="Connexion en cours de dev" />
+                <Alert title="Connexion en cours de développement" />
                 <div className="h-48">
                   <Logo />
                 </div>

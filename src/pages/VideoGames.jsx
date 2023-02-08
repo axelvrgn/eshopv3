@@ -84,13 +84,13 @@ const VideoGames = () => {
       <Layout>
         <Container>
           <div className="flex justify-between">
-            <div className="w-3/12">
+            <div className="w-3/12 hidden md:block">
               <Filters
                 handleGenre={handleGenre}
                 handlePlatform={handlePlatform}
               />
             </div>
-            <div className="w-8/12">
+            <div className="w-full md:w-8/12">
               <form className="flex flex-wrap space-x-2">
                 <FormField>
                   <FormControl

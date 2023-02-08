@@ -48,7 +48,7 @@ const Filters = ({ handleGenre, handlePlatform }) => {
                 name={platform.name}
                 value={platform.id}
                 onChange={(e) => handlePlatform(e.target.value)}
-                className="default:ring-2"
+                className="w-5 h-5"
               />
               <label htmlFor={platform.name} className="text-yellow-500">
                 {platform.name}
@@ -68,7 +68,7 @@ const Filters = ({ handleGenre, handlePlatform }) => {
                 name={genre.name}
                 value={genre.id}
                 onChange={(e) => handleGenre(e.target.value)}
-                className="default:ring-2"
+                className="w-5 h-5"
               />
               <label htmlFor={genre.name} className="text-yellow-500">
                 {genre.name}
