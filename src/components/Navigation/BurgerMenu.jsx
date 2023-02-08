@@ -75,7 +75,7 @@ const BurgerMenu = () => {
         onClose={() => setIsOpen(false)}
         className="relative z-50"
       >
-        <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+        <div className="fixed inset-0 bg-black/60" aria-hidden="true" />
         <div className="fixed inset-0 flex items-center justify-center p-4 h-full">
           <Dialog.Panel className="w-full max-w-lg bg-white px-6 flex flex-col items-center justify-between h-full overflow-y-auto">
             <Dialog.Title>
