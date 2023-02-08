@@ -77,7 +77,7 @@ const BurgerMenu = () => {
       >
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
         <div className="fixed inset-0 flex items-center justify-center p-4 h-full">
-          <Dialog.Panel className="w-full max-w-lg bg-white p-6 flex flex-col justify-center space-y-4 h-full">
+          <Dialog.Panel className="w-full max-w-lg bg-white px-6 flex flex-col items-center justify-between h-full overflow-y-auto">
             <Dialog.Title>
               <div className="h-48">
                 <Logo />
@@ -89,7 +89,7 @@ const BurgerMenu = () => {
             <div className="flex flex-col space-y-2 ">{guestRoutes}</div>
 
             <button
-              className="flex justify-center hover:text-yellow-400"
+              className="flex justify-center hover:text-yellow-400 py-6"
               onClick={() => setIsOpen(false)}
             >
               <Icon path={mdiClose} size={1} onClick={() => setIsOpen(false)} />
