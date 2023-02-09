@@ -1,14 +1,6 @@
 import React from "react";
 
-const FormControl = ({
-  type,
-  value,
-  placeholder,
-  onChange,
-  minLength,
-  maxLength,
-  required,
-}) => {
+const FormControl = ({ type, value, placeholder, onChange, required }) => {
   return (
     <div>
       <input
@@ -18,8 +10,6 @@ const FormControl = ({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        minlength={minLength}
-        maxlength={maxLength}
         required={required}
       />
     </div>

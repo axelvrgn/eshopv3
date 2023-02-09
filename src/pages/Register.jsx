@@ -48,13 +48,16 @@ const Register = () => {
     <Layout>
       <Container>
         <div className="flex justify-center">
-          <form className="bg-white p-16 border" onSubmit={handleSignup}>
-            <div className="w-[50ch] flex flex-col space-y-8">
+          <form
+            className="border bg-white p-4 md:p-16 "
+            onSubmit={handleSignup}
+          >
+            <div className="flex flex-col space-y-8">
               <Alert title="Inscription en cours de développement" />
               <div className="h-48">
                 <Logo />
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between flex-wrap">
                 <div className="uppercase font-semibold text-lg">
                   Inscription
                 </div>

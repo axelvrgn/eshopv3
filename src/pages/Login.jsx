@@ -42,7 +42,7 @@ const Login = () => {
         <Container>
           <div className="flex justify-center">
             <form onSubmit={handleLogin} className="bg-white border p-16 ">
-              <div className="flex flex-col space-y-8 w-[50ch]">
+              <div className="flex flex-col space-y-8">
                 <Alert title="Connexion en cours de développement" />
                 <div className="h-48">
                   <Logo />
@@ -77,7 +77,6 @@ const Login = () => {
                 </FormField>
                 <button
                   className="bg-yellow-400 text-white p-2 text-center"
-                  aria-live="polite"
                   type="submit"
                 >
                   {isLoading ? (

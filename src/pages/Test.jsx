@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 
 import { Dialog, RadioGroup } from "@headlessui/react";
+import { Tab } from "@headlessui/react";
 
 import Icon from "@mdi/react";
 import { mdiCheckCircleOutline } from "@mdi/js";
@@ -151,6 +152,45 @@ const Test = () => {
             </div>
           </RadioGroup>
         </div>
+        <div>
+          <Tab.Group>
+            <Tab.List>
+              <Tab as={Fragment}>
+                {({ selected }) => (
+                  /* Use the `selected` state to conditionally style the selected tab. */
+                  <button
+                    className={
+                      selected
+                        ? "bg-blue-500 text-white"
+                        : "bg-white text-black"
+                    }
+                  >
+                    Connexion
+                  </button>
+                )}
+              </Tab>
+              <Tab as={Fragment}>
+                {({ selected }) => (
+                  /* Use the `selected` state to conditionally style the selected tab. */
+                  <button
+                    className={
+                      selected
+                        ? "bg-blue-500 text-white"
+                        : "bg-white text-black"
+                    }
+                  >
+                    Inscription
+                  </button>
+                )}
+              </Tab>
+            </Tab.List>
+            <Tab.Panels>
+              <Tab.Panel>Content 1</Tab.Panel>
+              <Tab.Panel>Salam 1</Tab.Panel>
+            </Tab.Panels>
+          </Tab.Group>
+        </div>
+        <div></div>
       </Container>
     </Layout>
   );
